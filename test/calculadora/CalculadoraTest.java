@@ -21,7 +21,6 @@ public class CalculadoraTest {
 		calc = new Calculadora();
 	}
 	
-	@DisplayName("Testa a soma de dois números")
 	@Test
 	public void testSomaDoisNumeros() {
 		int soma = calc.soma(4, 5);		
@@ -38,7 +37,7 @@ public class CalculadoraTest {
 	public void testDivisaoPorZero() {
 		try {
 			int divisao = calc.divisao(8, 0);
-			fail("Exceção não lançada");
+			fail("Exceï¿½ï¿½o nï¿½o lanï¿½ada");
 		}catch (ArithmeticException e) {
 			assertEquals("/ by zero", e.getMessage());
 		}		
@@ -49,5 +48,48 @@ public class CalculadoraTest {
 		assertThrows(ArithmeticException.class,
 				() -> calc.divisao(8, 0));
 	}
+	
+	@Test
+	public void testSubtracao() {
+		int result = calc.subtracao(7, 5);		
+		Assertions.assertEquals(2, result);		
+	}
+	
+	@Test
+	public void testMultiplicacao() {
+		int result = calc.multiplicacao(7, 5);		
+		Assertions.assertEquals(35, result);		
+	}
+	
+	@Test
+	public void testSomatoria() {
+		int result = calc.somatoria(3);		
+		Assertions.assertEquals(6, result);		
+	}
+	
+	@Test
+	public void testIsTrue() {
+		boolean result = calc.ehPositivo(3);		
+		Assertions.assertEquals(true, result);		
+	}
+	
+	@Test
+	public void testComparaAEhIgualB() {
+		int result = calc.compara(3,3);		
+		Assertions.assertEquals(0, result);		
+	}
+	
+	@Test
+	public void testComparaAMaiorQueB() {
+		int result = calc.compara(4,3);		
+		Assertions.assertEquals(1, result);		
+	}
+	
+	@Test
+	public void testComparaAMenorQueB() {
+		int result = calc.compara(3,4);		
+		Assertions.assertEquals(-1, result);		
+	}
+
 
 }
